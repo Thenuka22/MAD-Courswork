@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CourseRegistration</string>
+    <string name="app_logo">App Logo</string>
+    <string name="welcome_message">Welcome to YourApp</string>
+    <string name="welcome_subtitle">Your journey begins here. Sign in to access all features or continue as a guest.</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="continue_as_guest">Continue as Guest</string>
 </resources>

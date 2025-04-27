@@ -9,29 +9,16 @@
     android:layout_marginBottom="10dp">  <!-- ✅ fixed here -->
 
     <TextView
-        android:id="@+id/tvCourseName"
+        android:id="@+id/tvBranchName"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Course Name"/>
+        android:text="Branch Name"/>
 
     <TextView
-        android:id="@+id/tvBranchName"
+        android:id="@+id/tvBranchLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Branch"/>
-
-    <TextView
-        android:id="@+id/tvStartDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Date"/>
-
-    <TextView
-        android:id="@+id/tvFee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fee"/>
-
+        android:text="Branch Location"/>
 </LinearLayout>

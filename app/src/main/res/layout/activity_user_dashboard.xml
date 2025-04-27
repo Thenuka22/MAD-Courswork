@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnViewCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Available Courses"/>
+
+    <Button
+        android:id="@+id/btnMyNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Notifications"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnMyProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnUserLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
