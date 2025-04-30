@@ -34,14 +34,14 @@ public class UserDashboardActivity extends AppCompatActivity {
         btnMyNotifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(UserDashboardActivity.this, NotificationActivity.class));
+                startActivity(new Intent(UserDashboardActivity.this, NotificationActivity.class));
             }
         });
 
         btnMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // startActivity(new Intent(UserDashboardActivity.this, ProfileActivity.class));
+               startActivity(new Intent(UserDashboardActivity.this, ProfileActivity.class));
             }
         });
 

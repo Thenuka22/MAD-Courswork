@@ -1,20 +1,22 @@
 package com.example.courseregistration.activities;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentResolver;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.courseregistration.R;
@@ -23,16 +25,21 @@ import com.example.courseregistration.database.DatabaseHelper.User;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private EditText etName, etAddress, etCity, etDOB, etNIC, etEmail, etGender, etPhone;
+    private EditText etName, etAddress, etCity, etDOB, etNIC, etEmail, etPhone;
+    private Spinner spinnerGender;
     private ImageView ivProfilePicture;
     private Button btnUploadImage, btnRegister;
+    //private Switch switchSetAdmin;
     private byte[] profilePictureBytes = null;
     private DatabaseHelper dbHelper;
+
+    private boolean isAdminMode = false; // Set to true in development mode only
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +54,46 @@ public class RegisterActivity extends AppCompatActivity {
         etDOB = findViewById(R.id.etDOB);
         etNIC = findViewById(R.id.etNIC);
         etEmail = findViewById(R.id.etEmail);
-        etGender = findViewById(R.id.etGender);
         etPhone = findViewById(R.id.etPhone);
         ivProfilePicture = findViewById(R.id.ivProfilePicture);
         btnUploadImage = findViewById(R.id.btnUploadImage);
         btnRegister = findViewById(R.id.btnRegister);
+        spinnerGender = findViewById(R.id.spinnerGender);
+       // switchSetAdmin = findViewById(R.id.switchSetAdmin);
 
-        btnUploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImageChooser();
-            }
-        });
+        // Gender dropdown
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item,
+                new String[]{"Male", "Female", "Other"});
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(genderAdapter);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerUser();
-            }
-        });
+        // Show Date Picker on DOB click
+        etDOB.setOnClickListener(v -> showDatePicker());
+
+        // Toggle switch visibility for admin mode
+        if (isAdminMode) {
+            //switchSetAdmin.setVisibility(View.VISIBLE);
+        } else {
+           // switchSetAdmin.setVisibility(View.GONE);
+        }
+
+        btnUploadImage.setOnClickListener(view -> openImageChooser());
+
+        btnRegister.setOnClickListener(view -> registerUser());
+    }
+
+    private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog dialog = new DatePickerDialog(this,
+                (view, year, month, dayOfMonth) -> {
+                    String dob = year + "-" + String.format("%02d", month + 1) + "-" + String.format("%02d", dayOfMonth);
+                    etDOB.setText(dob);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        dialog.show();
     }
 
     private void openImageChooser() {
@@ -103,8 +131,9 @@ public class RegisterActivity extends AppCompatActivity {
         String dob = etDOB.getText().toString();
         String nic = etNIC.getText().toString();
         String email = etEmail.getText().toString();
-        String gender = etGender.getText().toString();
         String phone = etPhone.getText().toString();
+        String gender = spinnerGender.getSelectedItem().toString();
+        //boolean isAdmin = switchSetAdmin.isChecked();
 
         if (name.isEmpty() || address.isEmpty() || city.isEmpty() || dob.isEmpty()
                 || nic.isEmpty() || email.isEmpty() || gender.isEmpty() || phone.isEmpty()) {
@@ -123,7 +152,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.setPhone(phone);
         user.setProfilePicture(profilePictureBytes);
         user.setVerified(false);
-        user.setUserType("USER"); // default user type
+        //user.setUserType(isAdmin ? "ADMIN" : "USER");
 
         long userId = dbHelper.createUser(user);
 
@@ -135,4 +164,3 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 }
-

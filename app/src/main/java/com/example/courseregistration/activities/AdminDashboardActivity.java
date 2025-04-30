@@ -25,21 +25,21 @@ public class AdminDashboardActivity extends AppCompatActivity {
         btnAddCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(AdminDashboardActivity.this, AddCourseActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, AddCourseActivity.class));
             }
         });
 
         btnViewUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(AdminDashboardActivity.this, UserListActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, UserListActivity.class));
             }
         });
 
         btnManageBranches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // startActivity(new Intent(AdminDashboardActivity.this, ManageBranchActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, ManageBranchActivity.class));
             }
         });
 

@@ -7,28 +7,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:text="Login to Your Account"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etEmailLogin"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@android:drawable/ic_dialog_email"
+            android:drawablePadding="10dp"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text" />
 
         <EditText
             android:id="@+id/etNICLogin"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="wrap_content"
             android:hint="NIC Number"
-            android:inputType="text" />
+            android:inputType="text"
+            android:drawableStart="@android:drawable/ic_menu_info_details"
+            android:drawablePadding="10dp"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:drawable/edit_text" />
 
         <Button
             android:id="@+id/btnLoginNow"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
             android:layout_marginTop="20dp"
-            android:text="Login Now" />
+            android:padding="12dp" />
 
     </LinearLayout>
 </ScrollView>
