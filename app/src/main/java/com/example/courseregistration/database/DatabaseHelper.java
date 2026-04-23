@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
     private static final String DATABASE_NAME = "CourseRegistration.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table names
     private static final String TABLE_USERS = "Users";
@@ -197,7 +197,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String INSERT_SAMPLE_OFFERING = "INSERT INTO " + TABLE_COURSE_OFFERINGS +
             " (" + COLUMN_COURSE_ID + ", " + COLUMN_BRANCH_ID + ", " + COLUMN_START_DATE + ", " +
             COLUMN_REGISTRATION_DEADLINE + ") VALUES " +
-            "(1, 4, '2024-03-15', '2024-02-29')";
+            "(1, 4, '2024-03-15', '2024-02-29')," +
+            "(2, 4, '2024-03-15', '2024-02-28')";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -65,4 +65,5 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Invalid Email or NIC", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

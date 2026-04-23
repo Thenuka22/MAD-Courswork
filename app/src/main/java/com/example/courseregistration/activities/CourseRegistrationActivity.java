@@ -15,6 +15,7 @@ import com.example.courseregistration.database.DatabaseHelper;
 import com.example.courseregistration.database.DatabaseHelper.CourseOffering;
 import com.example.courseregistration.database.DatabaseHelper.PromotionCode;
 import com.example.courseregistration.database.DatabaseHelper.Registration;
+import com.example.courseregistration.utils.EmailSender;
 import com.example.courseregistration.utils.LoggedInUser;
 
 public class CourseRegistrationActivity extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class CourseRegistrationActivity extends AppCompatActivity {
     private double courseFee;
     private Long promoId = null;
     private double discountAmount = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +102,13 @@ public class CourseRegistrationActivity extends AppCompatActivity {
         long registrationId = dbHelper.createRegistration(registration);
 
         if (registrationId != -1) {
-            Toast.makeText(this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
-            finish(); // Go back to dashboard
-        } else {
+            DatabaseHelper.User user = dbHelper.getUser(LoggedInUser.getUserId());
+            CourseOffering course = dbHelper.getCourseOffering(offeringId);
+            EmailSender.send(user.getEmail(), course.getCourseName(), user.getName());
+            Toast.makeText(this, "Registered & confirmation email sent!", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
             Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show();
         }
     }

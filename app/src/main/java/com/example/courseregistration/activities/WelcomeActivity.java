@@ -57,7 +57,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to main app screen as guest
-                Intent mainIntent = new Intent(WelcomeActivity.this, UserDashboardActivity.class);
+                Intent mainIntent = new Intent(WelcomeActivity.this, GuestDashboardActivity.class);
                 mainIntent.putExtra("USER_TYPE", "GUEST");
                 startActivity(mainIntent);
                 finish(); // Close welcome activity so user can't go back

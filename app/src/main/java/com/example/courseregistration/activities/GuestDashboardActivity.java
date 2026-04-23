@@ -41,6 +41,8 @@ public class GuestDashboardActivity extends AppCompatActivity {
 
         btnGuestExit.setOnClickListener(new View.OnClickListener() {
             @Override
+
+
             public void onClick(View view) {
                 finish(); // Exit guest dashboard
             }

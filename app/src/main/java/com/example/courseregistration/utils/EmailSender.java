@@ -15,8 +15,8 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
     public static void send(String toEmail, String courseName, String userName) {
-        final String fromEmail = "yourapp@gmail.com"; // Replace with your Gmail
-        final String password = "your_app_password";  // Use app-specific password (NOT regular password)
+        final String fromEmail = "hperera895@gmail.com"; // Replace with your Gmail
+        final String password = "ydls fsrc fkhh zvfe";  // Use app-specific password (NOT regular password)
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy); // allow sending on main thread

@@ -34,13 +34,14 @@
             android:id="@+id/etNICLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NIC Number"
-            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:background="@android:drawable/edit_text"
             android:drawableStart="@android:drawable/ic_menu_info_details"
             android:drawablePadding="10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:padding="12dp"
-            android:layout_marginTop="10dp"
-            android:background="@android:drawable/edit_text" />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btnLoginNow"

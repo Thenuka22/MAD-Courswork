@@ -16,7 +16,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.courseregistration.R;
@@ -35,11 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner spinnerGender;
     private ImageView ivProfilePicture;
     private Button btnUploadImage, btnRegister;
-    //private Switch switchSetAdmin;
     private byte[] profilePictureBytes = null;
     private DatabaseHelper dbHelper;
-
-    private boolean isAdminMode = false; // Set to true in development mode only
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnUploadImage = findViewById(R.id.btnUploadImage);
         btnRegister = findViewById(R.id.btnRegister);
         spinnerGender = findViewById(R.id.spinnerGender);
-       // switchSetAdmin = findViewById(R.id.switchSetAdmin);
 
         // Gender dropdown
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this,
@@ -70,13 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Show Date Picker on DOB click
         etDOB.setOnClickListener(v -> showDatePicker());
-
-        // Toggle switch visibility for admin mode
-        if (isAdminMode) {
-            //switchSetAdmin.setVisibility(View.VISIBLE);
-        } else {
-           // switchSetAdmin.setVisibility(View.GONE);
-        }
 
         btnUploadImage.setOnClickListener(view -> openImageChooser());
 
@@ -133,7 +121,6 @@ public class RegisterActivity extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String phone = etPhone.getText().toString();
         String gender = spinnerGender.getSelectedItem().toString();
-        //boolean isAdmin = switchSetAdmin.isChecked();
 
         if (name.isEmpty() || address.isEmpty() || city.isEmpty() || dob.isEmpty()
                 || nic.isEmpty() || email.isEmpty() || gender.isEmpty() || phone.isEmpty()) {
@@ -152,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.setPhone(phone);
         user.setProfilePicture(profilePictureBytes);
         user.setVerified(false);
-        //user.setUserType(isAdmin ? "ADMIN" : "USER");
+        user.setUserType("USER"); // Set default user type to avoid NULL
 
         long userId = dbHelper.createUser(user);
 
